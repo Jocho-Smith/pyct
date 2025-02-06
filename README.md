@@ -1,2 +1,9 @@
 # pyct
 Sparse grid combination technique in Python
+
+When I run `test_ct.py`, I get the following output:
+```
+{1: 1.2467770475709832, 9: 0.1602594527158515, 25: 0.006928808846440121, 81: 0.0010918087258836406, 289: 7.150321530726984e-05, 1089: 4.358540043897828e-06, 4225: 2.7772569876525043e-07}
+{9: 0.9336883805354743, 25: 3.0745385709242443, 81: 1.5718732004340181, 289: 2.1430005576609537, 1089: 2.1088720477435974, 4225: 2.0307869244478782}
+```
+Not quite sure, how to interpret this. It will probably be necessary, to compare to other interpolation/quadrature methods.
