@@ -33,6 +33,7 @@ def rowSortIndices(A):
 
 
 def getFullGrid1D(l, boundaryTreatment="BH"):
+  l = int(l)  # Ensure l is an integer
   if l == 0:
     if boundaryTreatment == "BH":
       x = np.array([0.5])  # de Baar/Harding
@@ -122,7 +123,7 @@ def interpolateFullGrid(basis, l, fX):
     for i in curI:
       i = list(i)
       i[t] = np.s_[:]
-      c[i] = interpolateFullGrid1D(basis[t], l[t], c[i])
+      c[tuple(i)] = interpolateFullGrid1D(basis[t], l[t], c[tuple(i)])
   
   return c
 
@@ -202,7 +203,7 @@ def interpolateEvaluateBHCombinationFullGrid(basis, l, fX, dfX, XX):
           curBasis[t] = {"type" : "hermiteValue"}
         else:
           curBasis[t] = {"type" : "hermiteDeriv"}
-          curFX = dfX[d * [np.s_[:]] + [t]]
+          curFX = dfX[tuple(d * [slice(None)] + [t])]
       
       c = interpolateFullGrid(curBasis, l, curFX)
       YY += coeff * evaluateFullGrid(curBasis, l, c, XX)
